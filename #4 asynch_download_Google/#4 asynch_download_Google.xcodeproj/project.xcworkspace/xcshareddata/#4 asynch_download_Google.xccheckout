@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C9F672B5-E389-4AB5-B7AB-759483E59D1C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>#4 asynch_download_Google</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EE4148A8-EB1B-48E1-9799-861F4922700B</key>
+		<string>https://github.com/bucifer/week2_deliverables.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>#4 asynch_download_Google/#4 asynch_download_Google.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EE4148A8-EB1B-48E1-9799-861F4922700B</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/bucifer/week2_deliverables.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EE4148A8-EB1B-48E1-9799-861F4922700B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EE4148A8-EB1B-48E1-9799-861F4922700B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Week 2 - Deliverables - Terry Bu</string>
+		</dict>
+	</array>
+</dict>
+</plist>
