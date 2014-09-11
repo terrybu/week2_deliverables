@@ -8,14 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <NSURLConnectionDelegate> {
+@interface ViewController : UIViewController <NSURLConnectionDelegate, UITextFieldDelegate> {
 
 }
+
+@property (strong, nonatomic) NSMutableURLRequest *request;
 
 @property (strong, nonatomic)    NSString *userID;
 @property (strong, nonatomic)    NSValue *longitude;
 @property (strong, nonatomic)    NSValue *latitude;
 @property (strong, nonatomic)    NSValue *radius;
 
+- (IBAction)postButton:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UILabel *doneLabel;
+
+@property (strong, nonatomic) IBOutlet UITextField *userid_textfield;
 
 @end

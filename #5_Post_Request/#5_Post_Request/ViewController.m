@@ -18,50 +18,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    //Create the request for asynchronous download
-    NSURL *postURL = [NSURL URLWithString:@"http://protected-wildwood-8664.herokuapp.com/users"];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postURL];
-    //specify that it is a GET request
-    request.HTTPMethod = @"POST";
-    
-    self.userID = @"burea1124";
-    self.latitude = @11;
-    self.longitude = @24;
-    self.radius = @100;
-    
-    NSDictionary *userDetails = @{@"user":@{
-                                      @"username": self.userID,
-                                      @"latitude": self.latitude,
-                                      @"longitude": self.longitude,
-                                      @"radius": self.radius},
-                                      @"commit":@"Create User",
-                                      @"action":@"update",
-                                      @"controller":@"users"
-                                  };
-    
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userDetails options:0 error:&error]; //note the ampersand for the error
-    //at this point, I have translated a NSDictionary object to a NSData object using NSJSONSerialization method. Now, the Dictionary object is in "hex bytes" data format ready to be converted into a JSON string
-    
-    NSString *myJSONString; //create an empty string
-    myJSONString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]; //convert the NSData object from before into a valid JSON STRING
-    NSLog(@"%@", myJSONString);
-    
-    //Now convert back the JSON String into a NSData object that can be appended to our NSURLRequest object
-    
-    NSData *myJSONrequest = [myJSONString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    //you need to define the HeaderField values like below before you can submit the request, otherwise it won't work
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%d", [myJSONrequest length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody: myJSONrequest];
-
-    //create url connection and fire the request you made above
-    NSURLConnection *connect = [[NSURLConnection alloc] initWithRequest: request delegate: self];
-}
+    [self.userid_textfield setDelegate:self];
+    }
 
 - (void)didReceiveMemoryWarning
 {
@@ -107,5 +65,56 @@
     // Check the error var
 }
 
+//
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.userid_textfield resignFirstResponder];
+    return YES;
+}
 
+- (IBAction)postButton:(id)sender {
+    //Create the request for asynchronous download
+    NSURL *postURL = [NSURL URLWithString:@"http://protected-wildwood-8664.herokuapp.com/users"];
+    
+    self.userID = self.userid_textfield.text;
+    self.latitude = @11;
+    self.longitude = @24;
+    self.radius = @100;
+    NSDictionary *userDetails = @{@"user":@{
+                                          @"username": self.userID,
+                                          @"latitude": self.latitude,
+                                          @"longitude": self.longitude,
+                                          @"radius": self.radius},
+                                  @"commit":@"Create User",
+                                  @"action":@"update",
+                                  @"controller":@"users"
+                                  };
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userDetails options:0 error:&error];
+    
+    //note the ampersand for the error
+    //at this point, I have translated a NSDictionary object to a NSData object using NSJSONSerialization method. Now, the Dictionary object is in "hex bytes" data format ready to be converted into a JSON string
+    
+    NSString *myJSONString; //create an empty string
+    myJSONString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]; //convert the NSData object from before into a valid JSON STRING
+    NSLog(@"%@", myJSONString);
+    
+    //Now convert back the JSON String into a NSData object that can be appended to our NSURLRequest object
+    
+    NSData *myJSONrequest = [myJSONString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    self.request = [NSMutableURLRequest requestWithURL:postURL];
+    //specify that it is a GET request
+    self.request.HTTPMethod = @"POST";
+    //you need to define the HeaderField values like below before you can submit the request, otherwise it won't work
+    [self.request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [self.request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [self.request setValue:[NSString stringWithFormat:@"%d", [myJSONrequest length]] forHTTPHeaderField:@"Content-Length"];
+    [self.request setHTTPBody: myJSONrequest];
+
+    //create url connection and fire the request you made above
+    NSURLConnection *connect = [[NSURLConnection alloc] initWithRequest: self.request delegate: self];
+    self.doneLabel.text = [NSString stringWithFormat:@"You did it, %@!",self.userid_textfield.text];
+}
 @end
