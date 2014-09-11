@@ -15,6 +15,10 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *myLocation;
 
+@property (strong, nonatomic) IBOutlet UILabel *LatLabel;
+@property (strong, nonatomic) IBOutlet UILabel *LongLabel;
+
+
 - (IBAction)getLocationButton:(id)sender;
 
 @end

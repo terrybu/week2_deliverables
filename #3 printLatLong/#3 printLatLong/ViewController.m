@@ -41,8 +41,13 @@
 
 //button action
 - (IBAction)getLocationButton:(id)sender {
+    
+    self.LatLabel.text = [NSString stringWithFormat: @"%.2f", self.myLocation.coordinate.latitude];
+    self.LongLabel.text = [NSString stringWithFormat: @"%.2f", self.myLocation.coordinate.longitude];
+    
     NSLog(@"the latitude is %f", self.myLocation.coordinate.latitude); //in order to make myLocation available to both the callback method and the button action, you needed to make myLocation a PROPERTY of ViewController - then the scope issue goes away
     NSLog(@"the longitude is %f", self.myLocation.coordinate.longitude);
+    
 }
 
 
