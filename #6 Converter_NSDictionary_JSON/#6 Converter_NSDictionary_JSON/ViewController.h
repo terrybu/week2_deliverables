@@ -10,4 +10,14 @@
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) NSDictionary *myDictionary;
+@property (strong, nonatomic) NSString *JSONThatCameFromMyDictionary;
+
+@property (strong, nonatomic) NSString *myJSONString;
+@property (strong, nonatomic) NSDictionary * DictionaryThatCameFromMyJSON;
+
+- (IBAction)logMyDictionaryButton:(id)sender;
+
+- (IBAction)logMyStringButton:(id)sender;
+
 @end
