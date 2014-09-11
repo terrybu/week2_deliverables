@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <NSURLConnectionDelegate> {
-    NSMutableData* responseData;
-    NSMutableData* imageData;
-}
+@interface ViewController : UIViewController <NSURLConnectionDelegate>
 
+@property (strong, nonatomic) NSMutableData* imageData;
 @property (strong, nonatomic) IBOutlet UIImageView *myImageView;
+
+
+- (IBAction)getGoogle:(id)sender;
 
 @end

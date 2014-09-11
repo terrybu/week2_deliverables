@@ -50,8 +50,6 @@
     
 }
 
-
-
 //Below is error-message code
 - (void)locationManager:(CLLocationManager *)locationManager
        didFailWithError:(NSError *)error {

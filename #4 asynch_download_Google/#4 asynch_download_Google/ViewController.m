@@ -25,7 +25,7 @@
     //specify that it is a GET request
     request.HTTPMethod = @"GET";
     
-    imageData = [[NSMutableData alloc]init];
+    self.imageData = [[NSMutableData alloc]init];
     
     //create url connection and fire the request you made before
     NSURLConnection *connect = [[NSURLConnection alloc] initWithRequest: request delegate: self];
@@ -50,7 +50,7 @@
 - (void)connection: (NSURLConnection *)connection didReceiveData:(NSData *) dataYouGot {
     //this handler, gets hit SEVERAL TIMES
     //Append new data to the instance variable everytime new data comes in
-    [imageData appendData:dataYouGot];
+    [self.imageData appendData:dataYouGot];
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
@@ -63,10 +63,7 @@
     // The request is complete and data has been received
     // You can parse the stuff in your instance variable now or do whatever you want
     
-    //Create new UIIMAGE from the data
-    UIImage *image = [[[UIImage alloc]init] initWithData:imageData];
-    
-    [self.myImageView setImage:image];
+
     
 //    //if you just log out responseData here, 
 //    NSString *strData = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
@@ -79,5 +76,12 @@
     // Check the error var
 }
 
+
+- (IBAction)getGoogle:(id)sender {
+    NSLog(@"fjdsafjs");
+    //Create new UIIMAGE from the data
+    UIImage *image = [[[UIImage alloc]init] initWithData:self.imageData];
+    [self.myImageView setImage:image];
+}
 
 @end
